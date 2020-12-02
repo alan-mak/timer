@@ -2,10 +2,7 @@ let alarmClock = function(arr) {
   if (arr === []) {
     return;
   }
-  let arrSorted = arr.sort((a, b) => a-b)
-  // console.log(arrSorted[arrSorted.length -1])
-
-  for (let counter of arrSorted) {
+  for (let counter of arr) {
     if (counter < 0) {
       console.log(counter, "Not allowed in the past")
     } else if (isNaN(counter)) {
