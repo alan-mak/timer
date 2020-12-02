@@ -3,20 +3,26 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+let logic = true;
 
 rl.question('Set for how many seconds?', (time) => {
-  if (time === 'b') {
-    console.log('Beep')
-  } else if (time === '\u0003') {
-    process.exit();
+  if (isNaN(time)) {
+    if(time === 'b') {
+        console.log('beep')
+        rl.close();
+    } else {
+        console.log('this is not a valid command')
+        rl.close();
+    }
   } else {
-    process.stdout.write(`timer has been set for ${time} seconds`)
+    console.log(`timer has been set for ${time} seconds`)
     setTimeout(() => {
-      process.stdout.write('beep' );
-      setTimeout(() => {
-        console.log("\n")
-      })
-  }, time  * 1000);
+      console.log('beep');
+    }, time  * 1000);
+    rl.close();
   }
-  rl.close();
 })
+// if (key === '\u0003') {
+  // console.log("Thanks for using me, ciao!");
+  // process.exit();
+// }
